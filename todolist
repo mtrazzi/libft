@@ -19,10 +19,10 @@
 • strcmp OK
 • strncmp OK
 • atoi OK
-• isalpha
-• isdigit
-• isalnum
-• isascii
-• isprint
+• isalpha OK
+• isdigit OK
+• isalnum OK
+• isascii OK
+• isprint OK
 • toupper
 • tolower
