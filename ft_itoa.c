@@ -5,21 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/27 18:06:42 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 20:09:22 by mtrazzi          ###   ########.fr       */
+/*   Created: 2017/05/28 16:41:28 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/05/28 16:56:40 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	ft_sizeof(int n)
+static	size_t			num_dig(int n)
 {
-	if (n <= 9)
-		return (1);
-	return (1 + ft_sizeof(n / 10));
+	size_t m;
+
+	m = 1;
+	while (n > 9)
+	{
+		n /= 10;
+		m++;
+	}
+	return (m);
 }
 
-static char		*ft_itoa_aux(int n, char *s, size_t len)
+static char				*ft_itoa_aux(int n, char *s, int len)
 {
 	while (--len >= 0)
 	{
@@ -30,7 +36,7 @@ static char		*ft_itoa_aux(int n, char *s, size_t len)
 	return (s);
 }
 
-char			*ft_itoa(int n)
+char					*ft_itoa(int n)
 {
 	char *tmp;
 
@@ -42,12 +48,12 @@ char			*ft_itoa(int n)
 	}
 	if (n < 0)
 	{
-		if ((tmp = ft_strnew(ft_sizeof(-n) + 1)) == NULL)
+		if ((tmp = ft_strnew(num_dig(-n) + 1)) == NULL)
 			return (NULL);
 		tmp[0] = '-';
-		return (ft_itoa_aux(-n, tmp + 1, ft_sizeof(-n)));
+		return (ft_itoa_aux(-n, tmp + 1, num_dig(-n)));
 	}
-	if ((tmp = ft_strnew(sizeof(char) * ft_sizeof(n))) == NULL)
+	if ((tmp = ft_strnew(sizeof(char) * num_dig(n))) == NULL)
 		return (NULL);
-	return (ft_itoa_aux(n, tmp, ft_sizeof(n)));
+	return (ft_itoa_aux(n, tmp, num_dig(n)));
 }
