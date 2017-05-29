@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 17:04:25 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/29 14:05:23 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/05/29 18:34:34 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,48 @@ void	refresh(char **p1, char **p2, char **p1_bis, char **p2_bis, char *a1, char 
 		*p1_bis = ft_strdup(a1);
 		*p2 = ft_strdup(a2);
 		*p2_bis = ft_strdup(a2);
+}
+
+void	f_1(char *c)
+{
+	*c = toupper(*c);
+}
+
+void	f_1_bis(char *c)
+{
+	*c = tolower(*c);
+}
+
+void	print_tab(char **tab)
+{
+	int i;
+
+	i = -1;
+	while (tab[++i])
+	{
+		ft_putstr(tab[i]);
+		ft_putchar('\n');
+	}
+}
+
+void	f_2(unsigned int k, char *c)
+{
+	if (k <= 8)
+		f_1(c);
+	else
+		f_1_bis(c);
+}
+
+char	f_3(char c)
+{
+	return (toupper(c));
+}
+
+char	f_4(unsigned int n, char c)
+{
+	if (n <= 8)
+		return (toupper(c));
+	return (tolower(c));
 }
 
 int		main(int ac, char **av)
@@ -70,7 +112,6 @@ int		main(int ac, char **av)
 		printf("my output :       %s\nexpected output : %s", ft_4[i](*p1, *p2, n_p), ft_4_sol[i](*p1_bis, *p2_bis, n_p));
 		refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], ( i == 1 ? "strchr" : "strrchr"));
 		printf("my output :       %s\nexpected output : %s", ft_5[i](*p1, n), ft_5_sol[i](*p1_bis, n));
-		i++;
 	}
 	i = -1;
 	typedef int (*Ft_2)(int);
@@ -122,7 +163,54 @@ int		main(int ac, char **av)
 	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_memdel");
 	ft_memdel((void **)p1);
 	printf("my output :       %s\nexpected output : %s", *p1, "(null)");
-	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_memalloc");
-	printf("my output :       %s\nexpected output : %s", strcpy(ft_memalloc(strlen(*p1)), *p1), strdup(*p1));
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strnew");
+	printf("my output :       %s\nexpected output : %s", strcpy(ft_strnew(strlen(*p1)), *p1), strdup(*p1));
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strdel");
+	ft_strdel(p1);
+	printf("my output :       %s\nexpected output : %s", *p1, "(null)");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strclr");
+	ft_bzero(*p1, strlen(*p1));
+	ft_strclr(*p1_bis);
+	printf("my output :       %d\nexpected output : %d", memcmp(*p1, *p1_bis, strlen(av[1])), 0);
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_striter");
+	ft_striter(*p1, &f_1);
+	printf("my output :       %s\nexpected output : %s", *p1, "SALUT J'AI BEAUCOUP D'IMAGINATION");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_striteri");
+	ft_striteri(*p1, &f_2);
+	printf("my output :       %s\nexpected output : %s", *p1, "SALUT J'Ai beaucoup d'imagination");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strmap");
+	printf("my output :       %s\nexpected output : %s", ft_strmap(*p1, &f_3), "SALUT J'AI BEAUCOUP D'IMAGINATION");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strmapi");
+	printf("my output :       %s\nexpected output : %s", ft_strmapi(*p1, &f_4), "SALUT J'Ai beaucoup d'imagination");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strequ");
+	printf("my output :       %d\nexpected output : %d\n", ft_strequ("abcdef", "abcdef"), 1);
+	printf("my output :       %d\nexpected output : %d", ft_strequ("abcdef", "abcdeg"), 0);
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strnequ");
+	printf("my output :       %d\nexpected output : %d\n", ft_strnequ("abcdef", "abcdef", 6), 1);
+	printf("my output :       %d\nexpected output : %d\n", ft_strnequ("abcdef", "abcdeg", 6), 0);
+	printf("my output :       %d\nexpected output : %d", ft_strnequ("abcdef", "abcdeg", 5), 1);
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strsub");
+	printf("my output :       %s\nexpected output : %s", ft_strsub(*p1, 11, 8), "beaucoup");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strjoin");
+	printf("my output :       %s\nexpected output : %s", ft_strjoin(*p1, *p2), "Salut j'ai beaucoup d'imaginationN'est-ce pas");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strtrim");
+	printf("my output :       %s\nexpected output : %s", ft_strtrim("        test        "), "test");	
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_strsplit");
+	printf("my output :       ");
+	print_tab(ft_strsplit(*p1, ' '));
+	printf("\nexpected output : Salut\nj'ai\nbeaucoup\nd'imagination");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_itoa");
+	printf("my output :       %s\nexpected output : %s\n", ft_itoa(2147483647), "2147483647");
+	printf("my output :       %s\nexpected output : %s\n", ft_itoa(-2147483648), "-2147483648");
+	printf("my output :       %s\nexpected output : %s\n", ft_itoa(42), "42");
+	printf("my output :       %s\nexpected output : %s\n", ft_itoa(-42), "-42");
+	printf("my output :       %s\nexpected output : %s\n", ft_itoa(0), "0");
+	printf("my output :       %s\nexpected output : %s\n", ft_itoa(5), "5");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_putendl");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_putnbr");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_putchar_fd");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_putstr_fd");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_putendl_fd");
+	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_putnbr_fd");
 	return (0);
 }

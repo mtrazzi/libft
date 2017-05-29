@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 16:41:28 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/28 16:56:40 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/05/29 18:38:45 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ static char				*ft_itoa_aux(int n, char *s, int len)
 {
 	while (--len >= 0)
 	{
-		s[len] = n % 10;
+		s[len] = '0' + n % 10;
 		n /= 10;
-		len--;
 	}
 	return (s);
 }

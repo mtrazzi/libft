@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 17:09:29 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 18:03:49 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/05/29 18:07:09 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ static size_t	count_words(char const *s, char c)
 		i++;
 	while (s[i])
 	{
-		if (s[i] == c)
-		{
-			while (s[i] == c)
-				i++;
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i])
 			n++;
-		}
-		else
+		while (s[i] && s[i] != c)
 			i++;
 	}
 	return (n);
@@ -48,7 +46,7 @@ static	size_t	strlen_char(char const *s, char c)
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
-	char	*tmp;
+	char	**tmp;
 	size_t	i;
 	size_t	j;
 
@@ -58,15 +56,14 @@ char			**ft_strsplit(char const *s, char c)
 		return (0);
 	while (j < count_words(s, c))
 	{
+		tmp = (char **)malloc(sizeof(char *));;
 		while (s[i] == c)
 			i++;
-		if ((tmp = ft_strnew(strlen_char(s + i, c))) == NULL)
+		if ((*tmp = ft_strnew(strlen_char(s + i, c))) == NULL)
 			return (NULL);
-		i--;
-		while (s[++i] != c)
-			tmp[i] = s[i];
-		tab[j] = tmp;
-		free(tmp);
+		ft_strncpy(*tmp, s + i, strlen_char(s + i, c));
+		i += strlen_char(s + i, c);
+		tab[j] = *tmp;
 		j++;
 	}
 	tab[j] = 0;
