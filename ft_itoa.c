@@ -25,14 +25,14 @@ static	size_t			num_dig(int n)
 	return (m);
 }
 
-static char				*ft_itoa_aux(int n, char *s, int len)
+static char				*ft_itoa_aux(int n, char *s, int len, int i)
 {
 	while (--len >= 0)
 	{
 		s[len] = '0' + n % 10;
 		n /= 10;
 	}
-	return (s);
+	return (s - i);
 }
 
 char					*ft_itoa(int n)
@@ -50,9 +50,9 @@ char					*ft_itoa(int n)
 		if ((tmp = ft_strnew(num_dig(-n) + 1)) == NULL)
 			return (NULL);
 		tmp[0] = '-';
-		return (ft_itoa_aux(-n, tmp + 1, num_dig(-n)));
+		return (ft_itoa_aux(-n, tmp + 1, num_dig(-n), 1));
 	}
 	if ((tmp = ft_strnew(sizeof(char) * num_dig(n))) == NULL)
 		return (NULL);
-	return (ft_itoa_aux(n, tmp, num_dig(n)));
+	return (ft_itoa_aux(n, tmp, num_dig(n), 0));
 }
