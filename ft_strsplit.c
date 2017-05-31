@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 17:09:29 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/29 18:07:09 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/05/31 17:25:36 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char			**ft_strsplit(char const *s, char c)
 		return (0);
 	while (j < count_words(s, c))
 	{
-		tmp = (char **)malloc(sizeof(char *));;
+		tmp = (char **)malloc(sizeof(char *));
 		while (s[i] == c)
 			i++;
 		if ((*tmp = ft_strnew(strlen_char(s + i, c))) == NULL)

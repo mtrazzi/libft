@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 17:04:25 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/29 18:34:34 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/05/31 18:52:48 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ int		main(int ac, char **av)
 	printf("my output :       %d\nexpected output : %d\n", ft_atoi("          -42abc"), atoi("          -42abc"));
 	printf("my output :       %d\nexpected output : %d\n", ft_atoi("   abc42"), atoi("   abc42"));
 	printf("my output :       %d\nexpected output : %d", ft_atoi("   +001abc"), atoi("   +001abc"));
+	printf("my output :       %d\nexpected output : %d", ft_atoi("\n 42 24") , atoi("\n 42 24")) ;
 	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_memalloc");
 	printf("my output :       %s\nexpected output : %s", strcpy(ft_memalloc(strlen(*p1)), *p1), strdup(*p1));
 	refresh(p1, p2,p1_bis, p2_bis, av[1], av[2], "ft_memdel");
