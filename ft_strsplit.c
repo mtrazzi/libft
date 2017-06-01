@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 17:09:29 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/31 17:25:36 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/06/01 16:48:46 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char			**ft_strsplit(char const *s, char c)
 	size_t	i;
 	size_t	j;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
 	j = 0;
 	if ((tab = (char **)malloc(sizeof(char *) * count_words(s, c))) == NULL)

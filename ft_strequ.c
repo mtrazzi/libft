@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 16:07:50 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 16:10:17 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/06/01 16:41:10 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int		ft_strequ(char const *s1, char const *s2)
 {
+	if (s1 == NULL || s2 == NULL)
+		return (0);
 	return (ft_strcmp(s1, s2) == 0);
 }

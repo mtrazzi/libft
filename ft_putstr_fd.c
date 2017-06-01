@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 19:52:09 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 19:55:15 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/06/01 18:06:30 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char const *s, int fd)
 {
 	int i;
 
+	if (s == NULL)
+		return ;
 	i = 0;
 	while (s[i])
 	{

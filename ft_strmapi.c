@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 16:00:47 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 16:01:34 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/06/01 17:13:27 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*res;
 	size_t	i;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
 	if ((res = ft_strdup(s)) == NULL)
 		return (NULL);

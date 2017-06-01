@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 19:07:12 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 19:07:56 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/06/01 18:06:12 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putendl(char const *s)
 {
+	if (s == NULL)
+		return ;
 	ft_putstr(s);
 	ft_putchar('\n');
 }

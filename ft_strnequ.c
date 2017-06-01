@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 16:11:34 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 18:03:28 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/06/01 20:13:15 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
+	if (s1 == NULL || s2 == NULL)
+		return (0);
 	return (ft_strncmp(s1, s2, n) == 0);
 }
