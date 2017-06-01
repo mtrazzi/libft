@@ -14,8 +14,11 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
+	t_list	*tmp;
+
 	if (lst == NULL)
 		return ;
+	tmp = lst->next;
 	f(lst);
-	ft_lstiter(lst->next, f);
+	ft_lstiter(tmp, f);
 }
