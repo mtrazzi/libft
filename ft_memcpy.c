@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 12:45:17 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 12:54:26 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/06/02 11:59:48 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		d[i] = s[i];
 		i++;
 	}
-	dest = (void *)d;
 	return (dest);
 }
