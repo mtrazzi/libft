@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/28 16:41:28 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/29 18:38:45 by mtrazzi          ###   ########.fr       */
+/*   Created: 2017/07/15 19:41:07 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/06 14:01:49 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t			num_dig(int n)
+static	size_t			num_dig(long long n)
 {
 	size_t m;
 
@@ -25,7 +25,7 @@ static	size_t			num_dig(int n)
 	return (m);
 }
 
-static char				*ft_itoa_aux(int n, char *s, int len, int i)
+static char				*ft_itoa_aux(long long n, char *s, int len, int i)
 {
 	while (--len >= 0)
 	{
@@ -35,15 +35,15 @@ static char				*ft_itoa_aux(int n, char *s, int len, int i)
 	return (s - i);
 }
 
-char					*ft_itoa(int n)
+char					*ft_itoa(long long n)
 {
 	char *tmp;
 
-	if (n == -2147483648)
+	if (n == LLONG_MIN)
 	{
-		if ((tmp = ft_strnew(sizeof(char) * 11)) == NULL)
+		if ((tmp = ft_strnew(sizeof(char) * 20)) == NULL)
 			return (NULL);
-		return (ft_strncpy(tmp, "-2147483648", 11));
+		return (ft_strncpy(tmp, "-9223372036854775808", 20));
 	}
 	if (n < 0)
 	{

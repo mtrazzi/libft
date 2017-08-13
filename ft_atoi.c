@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/27 12:44:43 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/06/01 17:15:26 by mtrazzi          ###   ########.fr       */
+/*   Created: 2017/08/06 13:59:48 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/06 14:00:06 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_atoi(const char *nptr)
+int		ft_atoi(const char *nptr)
 {
 	int					s;
 	int					i;

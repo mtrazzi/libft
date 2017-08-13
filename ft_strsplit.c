@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 17:09:29 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/06/02 13:34:04 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/13 19:23:15 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ static	size_t	strlen_char(char const *s, char c)
 	return (i);
 }
 
+char			*ft_strsplit_aux(char **tmp)
+{
+	char *str;
+
+	str = ft_strdup(*tmp);
+	free(*tmp);
+	free(tmp);
+	return (str);
+}
+
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
@@ -54,9 +64,9 @@ char			**ft_strsplit(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	if ((tab = (char **)malloc(sizeof(char *) * count_words(s, c) + 1)) == NULL)
-		return (NULL);
 	if (s == NULL)
+		return (NULL);
+	if ((tab = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1))) == NULL)
 		return (NULL);
 	while (j < count_words(s, c))
 	{
@@ -67,9 +77,11 @@ char			**ft_strsplit(char const *s, char c)
 			return (NULL);
 		ft_strncpy(*tmp, s + i, strlen_char(s + i, c));
 		i += strlen_char(s + i, c);
-		tab[j] = *tmp;
+		tab[j] = ft_strsplit_aux(tmp);
 		j++;
 	}
 	tab[j] = 0;
+	for (size_t i = 0; i <= count_words(s, c); i++)
+		printf("line %zu is |%s|\n", i, tab[i]);
 	return (tab);
 }

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/27 12:45:35 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/12 14:14:12 by mtrazzi          ###   ########.fr       */
+/*   Created: 2017/07/12 16:00:45 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/07/17 13:09:13 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+t_var	*ft_init(const char *format)
 {
-	int				i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	t_var *x;
+	t_val *v;
 
-	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (str1[i] && str2[i])
-	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		i++;
-	}
-	return (str1[i] - str2[i]);
+	if (!(x = (t_var *)malloc(sizeof(t_var))))
+		exit(EXIT_FAILURE);
+	x = ft_parse(format, x);
+	if (!(v = (t_val *)malloc(sizeof(t_val))))
+		exit(EXIT_FAILURE);
+	x->u = v;
+	x->mid = ft_strdup("");
+	x->pre = ft_strdup("");
+	x->str = ft_strdup("");
+	x->suf = ft_strdup("");
+	return (x);
 }

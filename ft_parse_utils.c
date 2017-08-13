@@ -1,25 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_parse_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/27 12:45:44 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/12 13:11:34 by mtrazzi          ###   ########.fr       */
+/*   Created: 2017/07/22 15:40:06 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/07/22 15:41:19 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int		ft_open(char *file_name)
 {
-	size_t i;
+	int fd;
 
-	if (!s)
+	if ((fd = open(file_name, O_RDONLY)) == -1)
+	{
+		ft_putstr("Error : cannot open file\n");
 		exit(EXIT_FAILURE);
+	}
+	return (fd);
+}
+
+int		ft_nb_lines(char *file_name)
+{
+	int		fd;
+	int		sum;
+	char	*line;
+
+	sum = 0;
+	fd = ft_open(file_name);
+	while (get_next_line(fd, &line) > 0)
+		sum++;
+	if (close(fd) == -1)
+		exit(EXIT_FAILURE);
+	return (sum);
+}
+
+int		ft_tab_length(char **tab)
+{
+	int i;
+
 	i = 0;
-	while (s[i])
+	while (tab[i])
 		i++;
 	return (i);
 }

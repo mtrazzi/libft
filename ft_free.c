@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/27 12:45:35 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/12 14:14:12 by mtrazzi          ###   ########.fr       */
+/*   Created: 2017/07/19 15:51:25 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/12 11:43:36 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	ft_free_tab(int **tab, int size)
 {
-	int				i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	int i;
 
 	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (str1[i] && str2[i])
+	while (i < size)
 	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
+		free(tab[i]);
 		i++;
 	}
-	return (str1[i] - str2[i]);
+	free(tab);
+}
+
+void	ft_free_char_tab(char **tab, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

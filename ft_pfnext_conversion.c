@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_next_conversion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/27 12:45:35 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/12 14:14:12 by mtrazzi          ###   ########.fr       */
+/*   Created: 2017/07/12 16:00:50 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/07/17 13:09:19 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+int		ft_is_conversion(char c)
 {
-	int				i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D')
+		return (1);
+	else if (c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U')
+		return (1);
+	else
+		return (c == 'x' || c == 'X' || c == 'c' || c == 'C' || c == '%');
+}
+
+char	ft_next_conversion(const char *str)
+{
+	int i;
 
 	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (str1[i] && str2[i])
-	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
+	while (str[i] && !(ft_is_conversion(str[i])))
 		i++;
-	}
-	return (str1[i] - str2[i]);
+	return (str[i]);
 }
