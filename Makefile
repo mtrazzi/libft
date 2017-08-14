@@ -6,13 +6,13 @@
 #    By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/27 16:05:15 by mtrazzi           #+#    #+#              #
-#    Updated: 2017/08/13 19:48:53 by mtrazzi          ###   ########.fr        #
+#    Updated: 2017/08/14 07:34:40 by mtrazzi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-INC = libft.h
+INC = libft.h get_next_line.h
 
 MKF = Makefile
 
@@ -103,7 +103,7 @@ all: $(NAME)
 
 $(NAME): $(SRC) $(OBJ) $(INC) $(MKF)
 	@echo "Building $(NAME)..."
-	@gcc -c -Wall -Wextra $(SRC)
+	@gcc -c -Wall -Wextra -I$(INC) $(SRC)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "\033[3;94m!$(NAME) built!\033[0m"

@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 12:59:16 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/13 21:56:20 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/14 09:42:55 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 # define LIBFT_H
 # include "ft_printf.h"
-# define BUF_SIZE	100000
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
@@ -72,7 +71,6 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-int					get_next_line(const int fd, char **line);
 int					ft_max(int a, int b);
 int					ft_min(int a, int b);
 void				ft_free_tab(int **tab, int size);
@@ -84,11 +82,12 @@ long				ft_atol(const char *nptr);
 typedef struct		s_list
 {
 	void			*content;
+	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-t_list				*ft_lstnew(void const *content);
-void				ft_lstdelone(t_list **alst, void (*del)(void *));
-void				ft_lstdel(t_list **alst, void (*del)(void *));
+t_list				*ft_lstnew(void const *content, size_t content_size);
+void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *nw);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
