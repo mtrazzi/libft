@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 06:39:41 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/14 17:39:21 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/14 20:23:05 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define GET_NEXT_LINE_H
 # include "libft.h"
-# define BUFF_SIZE 1023
+# define BUFF_SIZE 7
 
 typedef struct			s_line_lst
 {
