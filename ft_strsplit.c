@@ -6,13 +6,13 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 17:09:29 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/13 19:23:15 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/14 18:18:30 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
+static size_t	cnt_wrd(char const *s, char c)
 {
 	int i;
 	int n;
@@ -66,9 +66,9 @@ char			**ft_strsplit(char const *s, char c)
 	j = 0;
 	if (s == NULL)
 		return (NULL);
-	if ((tab = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1))) == NULL)
+	if ((tab = (char **)malloc(sizeof(char *) * (cnt_wrd(s, c) + 1))) == NULL)
 		return (NULL);
-	while (j < count_words(s, c))
+	while (j < cnt_wrd(s, c))
 	{
 		tmp = (char **)malloc(sizeof(char *));
 		while (s[i] == c)
@@ -81,7 +81,5 @@ char			**ft_strsplit(char const *s, char c)
 		j++;
 	}
 	tab[j] = 0;
-	for (size_t i = 0; i <= count_words(s, c); i++)
-		printf("line %zu is |%s|\n", i, tab[i]);
 	return (tab);
 }

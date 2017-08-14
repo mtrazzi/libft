@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 15:51:25 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/12 11:43:36 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/14 19:11:09 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,11 @@ void	ft_free_char_tab(char **tab, int size)
 		i++;
 	}
 	free(tab);
+}
+
+void	ft_free(char *str)
+{
+	if (!(str))
+		return ;
+	free(str);
 }

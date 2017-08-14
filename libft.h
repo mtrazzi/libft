@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 12:59:16 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/14 09:42:55 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/14 19:11:46 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define LIBFT_H
 # include "ft_printf.h"
+# include "get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
@@ -79,6 +80,8 @@ int					ft_open(char *file_name);
 int					ft_nb_lines(char *file_name);
 int					ft_tab_length(char **tab);
 long				ft_atol(const char *nptr);
+int					ft_open(char *file_name);
+void				ft_free(char *str);
 typedef struct		s_list
 {
 	void			*content;

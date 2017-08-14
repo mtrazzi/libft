@@ -6,7 +6,7 @@
 #    By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/27 16:05:15 by mtrazzi           #+#    #+#              #
-#    Updated: 2017/08/14 07:34:40 by mtrazzi          ###   ########.fr        #
+#    Updated: 2017/08/14 19:02:14 by mtrazzi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,4 +116,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all, clean, fclean, re, $(NAME)
